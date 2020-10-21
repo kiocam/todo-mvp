@@ -23,14 +23,24 @@
     <ul v-else>
       <li class="todo" v-for="(todo, index) in todos">
         <p class="todo-box">{{ todo }}</p>
-        <div class="edit-btn"><i class="fas fa-pen"></i>
+        <p class="todo-box">{{ date }}</p>
+        <div class="edit-btn" @click="editTodo(index)"><i class="fas fa-pen"></i>
         </div>
         <div class="close-btn" @click="removeTodo(index)"><i class="fas fa-times"></i>
         </div>
-        <div class="complete-btn"><i class="fas fa-check"></i>
+        <div class="complete-btn" @click="completeTodo(todo, index)"><i class="fas fa-check"></i>
         </div>
       </li>
     </ul>
+
+    <!-- completed todos -->
+    <div class="completedTodos">
+      <h2>Completed todos</h2>
+      <p v-if="completedTodos.length === 0">You have not completed any tasks</p>
+      <ul v-else>
+        <li class="c-todo" v-for="(todo, index) in completedTodos">{{ todo }}</li>
+      </ul>
+    </div>
   </section>
 
   <script src="app.js"></script>
